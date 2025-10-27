@@ -1,0 +1,11 @@
+body { background: #0f172a; color: #e6eef8; }
+.navbar-brand { font-weight:700; }
+.card { background: rgba(255,255,255,0.03); border: none; }
+.btn-outline-light { color: #fff; border-color: rgba(255,255,255,0.2); }
+a.nav-link.active { font-weight:600; }
+img { max-height: 300px; object-fit: cover; }
+
+.card-body h5,
+.card-body p {
+  color: #ffffff;
+}

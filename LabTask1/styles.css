@@ -1,0 +1,168 @@
+
+:root{
+    --app-bg: linear-gradient(180deg,#eef6fb 0%, #f8fbff 100%);
+    --card-bg: #ffffff;
+    --muted: #64748b;
+    --accent: #0066d6;
+    --accent-strong: #003f9e;
+    --danger: #e23b47;
+    --danger-dark: #b92b33;
+    --surface: #f7f9fb;
+    --radius-lg: 14px;
+    --radius-sm: 8px;
+    --shadow-1: 0 6px 24px rgba(10, 25, 47, 0.08);
+    --shadow-2: 0 3px 10px rgba(10, 25, 47, 0.06);
+    --space: 18px;
+    --max-width: 480px;
+    --transition: 180ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* Page background & centering */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--app-bg);
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    color: #0f1724;
+}
+
+/* App card */
+.container{
+    width: 100%;
+    max-width: var(--max-width);
+    background: var(--card-bg);
+    border-radius: calc(var(--radius-lg) + 2px);
+    padding: calc(var(--space) * 1.1);
+    box-shadow: var(--shadow-1);
+    transform-origin: center;
+    transition: transform var(--transition);
+    border: 1px solid rgba(10,25,47,0.03);
+}
+.container:active { transform: translateY(2px); }
+
+/* Header */
+h1{
+    font-size: 1.35rem;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.2px;
+    color: #071124;
+    font-weight: 600;
+}
+
+/* Form row (input + add button can stay full width) */
+#taskInput{
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(15,23,36,0.06);
+    background: var(--surface);
+    outline: none;
+    font-size: 15px;
+    box-shadow: var(--shadow-2);
+    transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+#taskInput::placeholder { color: #9aa7b8; font-weight: 500; }
+#taskInput:focus{
+    border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+    box-shadow: 0 6px 18px rgba(0,102,214,0.08);
+    transform: translateY(-1px);
+}
+
+/* Primary buttons (Add & Clear share base but different colors) */
+button{
+    display: inline-block;
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: none;
+    border-radius: 999px; /* pill */
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    user-select: none;
+    box-shadow: 0 6px 18px rgba(3,28,84,0.06);
+}
+
+/* Add button */
+#addBtn{
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+    color: #fff;
+    margin-bottom: 10px;
+}
+#addBtn:hover{ transform: translateY(-3px); }
+
+/* Clear-all button - visually distinct but same shape */
+#clearBtn{
+    background: linear-gradient(180deg, var(--danger), var(--danger-dark));
+    color: #fff;
+}
+#clearBtn:hover{ transform: translateY(-3px); }
+
+/* Task list */
+ul{
+    list-style: none;
+    margin: 16px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Each task row */
+li{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    background: linear-gradient(180deg, #fbfdff 0%, #f5f8fb 100%);
+    padding: 12px 14px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-2);
+    border: 1px solid rgba(7,17,36,0.03);
+    font-size: 15px;
+    color: #082033;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+li:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(7,17,36,0.06); }
+
+/* Delete button inside each task - smaller & square-ish */
+li button{
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid rgba(226,59,71,0.12);
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 72px;
+    transition: background-color var(--transition), color var(--transition), transform var(--transition);
+}
+li button:hover{
+    background: rgba(226,59,71,0.08);
+    color: var(--danger-dark);
+    transform: translateY(-2px);
+}
+
+/* Accessibility: keyboard focus outlines */
+button:focus, #taskInput:focus, li button:focus{
+    outline: 3px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    outline-offset: 3px;
+}
+
+/* Small screens adjustments */
+@media (max-width: 420px){
+    .container{ padding: 14px; border-radius: 12px; }
+    h1{ font-size: 1.15rem; }
+    li{ padding: 10px; border-radius: 10px; }
+    button{ padding: 10px; font-size: 14px; }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce){
+    * { transition: none !important; animation: none !important; transform: none !important; }
+}

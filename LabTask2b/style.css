@@ -1,0 +1,111 @@
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+  background: #eef2f6; /* soft cool tone */
+  color: #213547;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+/* Card / container */
+.container {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(33,53,71,0.08);
+  text-align: center;
+}
+
+/* Heading */
+h1 {
+  font-size: 22px;
+  margin-bottom: 14px;
+  color: #12232f;
+  font-weight: 600;
+}
+
+/* Results wrapper */
+.password-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* Individual result */
+.password-result {
+  background: #fbfdff;
+  border: 1px solid #e6eef3;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  transition: background-color 180ms ease, transform 180ms ease;
+  cursor: default;
+}
+
+/* Hover effect (subtle) */
+.password-result:hover {
+  transform: translateY(-3px);
+  background: #f7fbfe;
+}
+
+/* Text blocks inside result */
+.password-result span {
+  display: block;
+  color: #475b66;
+  font-size: 14px;
+}
+
+/* Primary password label (first child) */
+.password-result span:first-child {
+  font-weight: 600;
+  color: #12232f;
+  font-size: 15px;
+}
+
+/* Score text */
+.password-result span:nth-child(2) {
+  color: #2d4852;
+  font-weight: 500;
+}
+
+/* Strength label */
+.password-result span:nth-child(3) {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+}
+
+/* Strength color variants */
+.weak span:nth-child(3) {
+  color: #d1495b;
+}
+
+.medium span:nth-child(3) {
+  color: #ff8a00;
+}
+
+.strong span:nth-child(3) {
+  color: #16a085;
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .container { padding: 16px; }
+  .password-result { padding: 10px; min-height: 64px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .password-result span { font-size: 13px; }
+}
